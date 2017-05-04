@@ -14,7 +14,7 @@ public class AFGetOptions : MonoBehaviour {
         char type = gameObject.name[1]; // f a 
         z -= 0.01f;
         pos.z = z;
-        pos.x = 2.474f; pos.y = -4.06f;
+        pos.x = 2.586f; pos.y = -4.048f;
 
         if (type == 'a')
             gameObject.transform.parent.GetComponent<AF_generator>().attributeOptions[i].transform.position = pos;

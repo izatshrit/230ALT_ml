@@ -18,7 +18,19 @@ public class AF_refineInput : MonoBehaviour {
             {
                 if (gameObject.name[1] == 'a')
                     text += ": auto";
-                else text += "():void";
+                else
+                {
+                    text = text.Split('(')[0];
+                    int i;
+                    for (i = 0; i < CreateClass.num_of_Classes; i++)
+                        if (text == CreateClass.myclasses[i].name) break;
+                    if (i >= CreateClass.num_of_Classes)
+                        
+                        text += "():void";
+                    else
+                        text += "():constructor";
+                }
+
                 
             }
             //done
@@ -44,7 +56,7 @@ public class AF_refineInput : MonoBehaviour {
                         st += str[k];
                     text = st + ": auto";
                 }else
-                 text = str + ": auto"; // add auto'
+                 text = str + ": auto";
                 
             }
             input.text = text;
@@ -95,7 +107,14 @@ public class AF_refineInput : MonoBehaviour {
                     if (input.text[i] != ' ') h += input.text[i];
                 }
                 if (h[h.Length - 1] == ')') {
-                    h += ": void";
+                    int i;
+                    for (i = 0; i < CreateClass.num_of_Classes; i++)
+                        if (text == CreateClass.myclasses[i].name) break;
+                    if (i >= CreateClass.num_of_Classes)
+                        h += ":void";
+                    else
+                        h += ":constructor";
+                    
                     GameObject.Find("tips").GetComponent<writeTips>().fade = true;
                     GameObject.Find("tips").GetComponent<writeTips>().tips.text = " ! You might have forgotten to designate the type, so we have get it done for you";
 

@@ -9,6 +9,10 @@ public class writeInheritance : MonoBehaviour {
     public InputField Input2;
     public InputField Input3;
 
+    public Button button1;
+    public Button button2;
+    public Button button3;
+
     public Toggle virtualCheck1;
     public Toggle virtualCheck2;
     public Toggle virtualCheck3;
@@ -25,6 +29,7 @@ public class writeInheritance : MonoBehaviour {
     public string virt3 = "";
 
     public string insertCode = "";
+    public string prevInsertCode = "";
     int order = 0;
 
     [DllImport("C++ Generator")]
@@ -37,10 +42,16 @@ public class writeInheritance : MonoBehaviour {
 
         self = gameObject.GetComponent<setName_opMenu>().namelabel.text; // class name
         other = Input1.text;
-       // Debug.Log("1 " + other);
+        // Debug.Log("1 " + other);
+        string s = button1.GetComponentInChildren<Text>().text;
+        string permission;
+        if (s == "+") permission = "public";
+        else if (s == "-") permission = "private";
+        else permission = "protected";
+
             if (virtualCheck1.isOn)
                 virt1 = " virtual";
-            insertCode = ": " + virt1 + " " + other;
+            insertCode = ": " + permission+" "+ virt1 + " " + other;
             insert();
         
     }
@@ -48,10 +59,17 @@ public class writeInheritance : MonoBehaviour {
     {
         self = gameObject.GetComponent<setName_opMenu>().namelabel.text; // class name
         other = Input2.text;
-        //  Debug.Log("2 " + other);
+
+        string s = button2.GetComponentInChildren<Text>().text;
+        string permission;
+        if (s == "+") permission = "public";
+        else if (s == "-") permission = "private";
+        else permission = "protected";
+
         if (virtualCheck2.isOn)
             virt2 = " virtual";
-        insertCode = ", " + virt2 + " " + other;
+        
+        insertCode = prevInsertCode+  ", " + permission + " "+virt2 + " " + other;
         insert();
 
     }
@@ -59,10 +77,17 @@ public class writeInheritance : MonoBehaviour {
     {
         self = gameObject.GetComponent<setName_opMenu>().namelabel.text; // class name
         other = Input3.text;
-        //  Debug.Log("3 " + other);
+
+        string s = button2.GetComponentInChildren<Text>().text;
+        string permission;
+        if (s == "+") permission = "public";
+        else if (s == "-") permission = "private";
+        else permission = "protected";
+
         if (virtualCheck3.isOn)
             virt3 = " virtual";
-        insertCode = ", " + virt3 + " " + other;
+
+        insertCode = ", " + permission + " " + virt3 + " " + other;
         insert();
 
     }
@@ -92,10 +117,9 @@ public class writeInheritance : MonoBehaviour {
             {          
                 if (lines[i].Contains(toCompare))
                 {
-                 //   Debug.Log("fat");
-                      lines[i] += insertCode;
-                //    Debug.Log("insert code" + insertCode);
-                 //   Debug.Log(lines[i]);
+                    
+                      lines[i] = toCompare+ insertCode;
+                
                 }           
             }
             fs.Close();
@@ -118,6 +142,7 @@ public class writeInheritance : MonoBehaviour {
             sr.Close();
             fs.Close();
             testColor.writeCode = true;
+            prevInsertCode = insertCode;
         }       
     }
     

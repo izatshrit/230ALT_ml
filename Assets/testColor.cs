@@ -12,7 +12,7 @@ public class testColor : MonoBehaviour
     string code;
     string[] lines;
 
-    string[] blue = new string[17];
+    string[] blue = new string[20];
     string cyan = "string";
 
     // Use this for initialization
@@ -32,6 +32,10 @@ public class testColor : MonoBehaviour
         blue[14] = "class";
         blue[15] = "virtual";
         blue[16] = "friend";
+        blue[17] = "public";
+        blue[18] = "private";
+        blue[19] = "protected";
+
         blue[5] = "const";
         blue[6] = "static";
 

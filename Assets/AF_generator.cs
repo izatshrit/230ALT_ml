@@ -18,7 +18,7 @@ public class AF_generator : MonoBehaviour {
 
     public string focusedField;
 
-    float y = 0.55f; // fixed rate don't change it
+    float y = 0.45f; // fixed rate don't change it
     int v = 0;
     public int ai = 0;
     public int fi = 0;

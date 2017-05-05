@@ -24,7 +24,7 @@ public class deleteClass : MonoBehaviour {
 
         for (int k = 0; k < fi; k++)
         {
-            CreateClass.myclasses[i].GetComponent<AF_generator>().attributeOptions[k].GetComponent<AFoptionsHandler>().deleteEverything = true;
+            CreateClass.myclasses[i].GetComponent<AF_generator>().functionOptions[k].GetComponent<AFoptionsHandler>().deleteEverything = true;
             CreateClass.myclasses[i].GetComponent<AF_generator>().functionOptions[k].GetComponent<AFoptionsHandler>().deleteF();
         }
         Vector3 pos = new Vector3(1000, 1000, 1000);
@@ -37,7 +37,7 @@ public class deleteClass : MonoBehaviour {
 
         input1.GetComponent<drawline>().setZero();
         input2.GetComponent<drawline>().setZero();
-        input3.GetComponent<drawline>().setZero();
+        input3.GetComponent<drawline>().setZero(); // in case inhritance lines is drawn set them to zero
 
     }
 }
